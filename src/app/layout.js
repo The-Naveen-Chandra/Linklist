@@ -1,12 +1,11 @@
-import type { Metadata } from "next";
 import { Varela_Round } from "next/font/google";
 
 import "./globals.css";
-import Header from "@/components/Header";
+import Header from "@/components/header";
 
 const font = Varela_Round({ weight: "400", subsets: ["latin"] });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Linklist",
   description: "Linklist is your one link for everything.",
   icons: {
@@ -25,11 +24,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={font.className}>
