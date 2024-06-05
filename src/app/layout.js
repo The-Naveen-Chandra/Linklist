@@ -1,7 +1,9 @@
 import { Varela_Round } from "next/font/google";
 
-import "./globals.css";
 import Header from "@/components/header";
+import { ThemeProvider } from "@/components/theme-provider";
+
+import "./globals.css";
 
 const font = Varela_Round({ weight: "400", subsets: ["latin"] });
 
@@ -28,10 +30,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={font.className}>
-        <main>
-          <Header />
-          <div className="max-w-4xl mx-auto p-6">{children}</div>
-        </main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main>
+            <Header />
+            <div className="max-w-4xl mx-auto p-6">{children}</div>
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );
