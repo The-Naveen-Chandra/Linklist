@@ -10,7 +10,7 @@ export default async function Header() {
   const session = await getServerSession(authOptions);
 
   return (
-    <header className="bg-white dark:bg-gray-900 border-b py-4">
+    <header className="bg-white dark:bg-gray-950 border-b py-4">
       <div className="max-w-4xl mx-auto flex justify-between px-6">
         <div className="flex gap-6">
           <Link href={"/"} className="flex items-center justify-center gap-1">
