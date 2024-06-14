@@ -2,9 +2,8 @@ import { getServerSession } from "next-auth";
 
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
-import RightIcon from "@/components/icons/right-icon";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+
+import UsernameForm from "@/components/forms/username-form";
 
 const AccountPage = async ({ searchParams }) => {
   const session = await getServerSession(authOptions);
@@ -15,39 +14,8 @@ const AccountPage = async ({ searchParams }) => {
   }
 
   return (
-    <div className="px-10 py-8 max-w-xl mx-auto border rounded-lg mt-6 bg-white dark:bg-gray-950">
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-14">
-        <Image
-          src={"/username-img.svg"}
-          alt="Username Image"
-          width={200}
-          height={200}
-        />
-
-        <form>
-          <h1 className="text-2xl font-bold text-center mb-6">
-            Grab your username
-          </h1>
-          <p className="text-center mb-6 text-gray-500">
-            Choose a username to claim it as your own
-          </p>
-          <div className="max-w-xs mx-auto">
-            <input
-              type="text"
-              placeholder="Username"
-              defaultValue={desiredUsername}
-              className="block p-2 mx-auto border w-full mb-3 rounded-md text-center"
-            />
-            <Button
-              type="submit"
-              className="py-2 px-4 mx-auto w-full rounded-md flex gap-2 items-center justify-center"
-            >
-              <span>Claim username</span>
-              <RightIcon />
-            </Button>
-          </div>
-        </form>
-      </div>
+    <div>
+      <UsernameForm desiredUsername={desiredUsername} />
     </div>
   );
 };
