@@ -2,9 +2,11 @@
 
 import { useEffect } from "react";
 import { signIn } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
-export default function HeroForm() {
+export default function HeroForm({ user }) {
+  const router = useRouter();
+
   useEffect(() => {
     if (
       "localStorage" in window &&
@@ -24,11 +26,15 @@ export default function HeroForm() {
     const username = input.value;
 
     if (username.length > 0) {
-      // Save username to localStorage
-      window.localStorage.setItem("desiredUsername", username);
+      if (user) {
+        router.push("/account?username=" + username);
+      } else {
+        // Save username to localStorage
+        window.localStorage.setItem("desiredUsername", username);
 
-      // Sign in with Google
-      await signIn("google");
+        // Sign in with Google
+        await signIn("google");
+      }
     }
   }
 

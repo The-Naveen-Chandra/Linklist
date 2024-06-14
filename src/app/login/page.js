@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function LoginPage() {
   return (
     <div>
-      <div className="px-10 py-8 max-w-xl mx-auto border rounded-lg mt-6 bg-white dark:bg-gray-950">
+      <div className="px-10 py-8 max-w-2xl mx-auto border rounded-lg mt-6 bg-white dark:bg-gray-950">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-14">
           <Image
             src={"/login-img.svg"}
