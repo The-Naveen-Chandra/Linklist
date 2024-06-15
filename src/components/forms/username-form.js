@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import RightIcon from "@/components/icons/right-icon";
 import usernameFormAction from "@/actions/username-form-action";
+import UsernameSubmitButton from "../buttons/username-submit-button";
 
 export default function UsernameForm({ desiredUsername }) {
   const [taken, setTaken] = useState(false);
@@ -18,7 +19,7 @@ export default function UsernameForm({ desiredUsername }) {
     setTaken(result === false);
 
     if (result) {
-      redirect(`/account/${formData.get("username")}`);
+      redirect(`/account?created=${formData.get("username")}`);
     }
   }
 
@@ -57,13 +58,7 @@ export default function UsernameForm({ desiredUsername }) {
               </div>
             )}
 
-            <Button
-              type="submit"
-              className="py-2 px-4 mx-auto w-full rounded-md flex gap-2 items-center justify-center"
-            >
-              <span>Claim username</span>
-              <RightIcon />
-            </Button>
+            <UsernameSubmitButton />
           </div>
         </form>
       </div>
